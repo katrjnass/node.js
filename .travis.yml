@@ -3,6 +3,10 @@ node_js:
   - node
 script:
   - npm run lint
-  - npm run test
+after_success:
+  - npm run deploy
 notifications:
   email: false
+branches:
+  only:
+    - master
