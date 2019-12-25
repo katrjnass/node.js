@@ -4,74 +4,50 @@
 <HEAD>
     <meta charset="utf-8">
     <TITLE>Перемикачі</TITLE>
-    <script>
-        function chpict(obj){
-            var lin =  document.getElementById('line');
-            if(obj.elements[0].checked)
-            {
-                lin.style.borderWidth=obj.elements[0].value+"px"
-            }
-            else
-            {
-                lin.style.borderWidth=obj.elements[1].value+"px" ;
-            }
-            if (obj.elements[2].checked)
-                lin.style.marginTop=obj.elements[2].value+"px"
-            else
-                lin.style.marginTop=obj.elements[3].value+"px"
-        }
-    </script>
+
     <script language="JavaScript">
-        function questionnaire(obj) {
+        function data(obj) {
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference("message");
             if(obj.elements[0].checked)
             {obj.resSex.value=obj.elements[0].value}
-            else
-            {obj.resSex.value=obj.elements[1].value}
-            obj.resAge.value=obj.elements[2].value;
-            if(obj.elements[3].checked)
-            {obj.resStatus.value=obj.elements[3].value}
-            else
-            {obj.resStatus.value=obj.elements[4].value}
+
         }
 
     </script>
 </HEAD>
 <BODY>
-<p>Продемонструвати зміну розмірів і положення на сторінці горизонтальної лінії hr. </p>
-<FORM name="form1">
-    Оберіть значення параметра вирівнювання і натисніть кнопку
-    <b>Переглянути</b>.<br>
-    <PRE>
-        <input type="radio" name="px" checked value="2">small
-        <input type="radio" name="px" value="60">big
-        <input type="radio" name="alg" checked value="15">up
-        <input type="radio" name="alg" value="80">down
- </PRE>
-    <hr id="line" noshade size="20">
-    <input type="button" value= "Переглянути" onclick="chpict(form1)">
-</FORM>
-<p>Розробити анкету, що визначає стать, вік, сімейне положення особи, і передає ці дані в скрипт. </p>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyAKvd15C0xtBsLENFY95N3Q95GJ8ieWsrI",
+        authDomain: "katrjnass-node.firebaseapp.com",
+        databaseURL: "https://katrjnass-node.firebaseio.com",
+        projectId: "katrjnass-node",
+        storageBucket: "katrjnass-node.appspot.com",
+        messagingSenderId: "162727790716",
+        appId: "1:162727790716:web:2f68c5b0606a3b70b421f9",
+        measurementId: "G-9Z360132MQ"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+</script>
 <form name="form2">
-    Оберіть значення параметра вирівнювання і натисніть кнопку <b>Встановити</b>.<br>
-    Оберіть свою стать:
-    <PRE>
-        <input type="radio" name="sex"  checked value="female">жіноча
-        <input type="radio" name="sex" value="male">чоловіча
-    </PRE>
-    Напишіть свій вік:
-    <PRE>
-        <input type="text" size="5" name="age" >
-    </PRE>
-    Оберіть своє сімейне положення:
-    <pre>
-    <input type="radio" name="status" checked value="married">одружений/заміжня
-        <input type="radio" name="status" value="unmarried">не одружений/не заміжня
- </pre>
-    <input type="button" value= "Встановити" onclick="questionnaire(form2)">
-    <br><br>
-    Стать:<input type="text" size="10" name="resSex"><br>
-    Вік:<input type="text" size="10" name="resAge"><br>
-    Сімейне положення:<input type="text" size="10" name="resStatus">
+
+    <input type="radio" name="katya"  value="k">Katya
+    <input type="radio" name="lilya"  value="l">Lylia
+    <input type="radio" name="vova"   value="v">Vova
+
+    <input type="button" value= "Встановити" onclick="data(form2)">
+
 </form>
 </BODY>
 </HTML>
